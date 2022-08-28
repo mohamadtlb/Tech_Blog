@@ -8,6 +8,8 @@
 // ignore_for_file: directives_ordering,unnecessary_import
 
 import 'package:flutter/widgets.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter/services.dart';
 
 class $AssetsIconsGen {
   const $AssetsIconsGen();
@@ -18,12 +20,24 @@ class $AssetsIconsGen {
   /// File path: assets/icons/bluepen.png
   AssetGenImage get bluepen => const AssetGenImage('assets/icons/bluepen.png');
 
+  /// File path: assets/icons/dawn_cat_arrow.png
+  AssetGenImage get dawnCatArrow =>
+      const AssetGenImage('assets/icons/dawn_cat_arrow.png');
+
   /// File path: assets/icons/hashtagicon.png
   AssetGenImage get hashtagicon =>
       const AssetGenImage('assets/icons/hashtagicon.png');
 
   /// File path: assets/icons/home.png
   AssetGenImage get home => const AssetGenImage('assets/icons/home.png');
+
+  /// File path: assets/icons/manage_article_icon.png
+  AssetGenImage get manageArticleIcon =>
+      const AssetGenImage('assets/icons/manage_article_icon.png');
+
+  /// File path: assets/icons/manage_podcast_icon.png
+  AssetGenImage get managePodcastIcon =>
+      const AssetGenImage('assets/icons/manage_podcast_icon.png');
 
   /// File path: assets/icons/user.png
   AssetGenImage get user => const AssetGenImage('assets/icons/user.png');
@@ -59,6 +73,10 @@ class $AssetsImagesGen {
 
   /// File path: assets/images/teccast.png
   AssetGenImage get teccast => const AssetGenImage('assets/images/teccast.png');
+
+  /// File path: assets/images/techBot.svg.svg
+  SvgGenImage get techBotSvg =>
+      const SvgGenImage('assets/images/techBot.svg.svg');
 }
 
 class Assets {
@@ -129,4 +147,53 @@ class AssetGenImage extends AssetImage {
   String get path => _assetName;
 
   String get keyName => _assetName;
+}
+
+class SvgGenImage {
+  const SvgGenImage(this._assetName);
+
+  final String _assetName;
+
+  SvgPicture svg({
+    Key? key,
+    bool matchTextDirection = false,
+    AssetBundle? bundle,
+    String? package,
+    double? width,
+    double? height,
+    BoxFit fit = BoxFit.contain,
+    AlignmentGeometry alignment = Alignment.center,
+    bool allowDrawingOutsideViewBox = false,
+    WidgetBuilder? placeholderBuilder,
+    Color? color,
+    BlendMode colorBlendMode = BlendMode.srcIn,
+    String? semanticsLabel,
+    bool excludeFromSemantics = false,
+    Clip clipBehavior = Clip.hardEdge,
+    bool cacheColorFilter = false,
+    SvgTheme? theme,
+  }) {
+    return SvgPicture.asset(
+      _assetName,
+      key: key,
+      matchTextDirection: matchTextDirection,
+      bundle: bundle,
+      package: package,
+      width: width,
+      height: height,
+      fit: fit,
+      alignment: alignment,
+      allowDrawingOutsideViewBox: allowDrawingOutsideViewBox,
+      placeholderBuilder: placeholderBuilder,
+      color: color,
+      colorBlendMode: colorBlendMode,
+      semanticsLabel: semanticsLabel,
+      excludeFromSemantics: excludeFromSemantics,
+      clipBehavior: clipBehavior,
+      cacheColorFilter: cacheColorFilter,
+      theme: theme,
+    );
+  }
+
+  String get path => _assetName;
 }

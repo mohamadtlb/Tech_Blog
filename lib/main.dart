@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:tec/gen/assets.gen.dart';
 import 'package:tec/my_colors.dart';
 import 'package:tec/view/splash_screen.dart';
 
@@ -22,6 +21,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    var textTheme = Theme.of(context).textTheme;
     return MaterialApp(
         localizationsDelegates: const [
           GlobalMaterialLocalizations.delegate,
@@ -32,6 +32,31 @@ class MyApp extends StatelessWidget {
           Locale('fa', ''), // farsi
         ],
         theme: ThemeData(
+            //for textfield
+            inputDecorationTheme: InputDecorationTheme(
+              border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(15),
+                  borderSide: const BorderSide(width: 2)),
+              filled: true,
+              fillColor: Colors.white,
+            ),
+            //for bottomNAv
+            elevatedButtonTheme: ElevatedButtonThemeData(
+              style: ButtonStyle(
+                textStyle: MaterialStateProperty.resolveWith((states) {
+                  if (states.contains(MaterialState.pressed)) {
+                    return const TextStyle(fontSize: 25);
+                  }
+                  return const TextStyle(fontSize: 20);
+                }),
+                backgroundColor: MaterialStateProperty.resolveWith((states) {
+                  if (states.contains(MaterialState.pressed)) {
+                    return Solidcolors.seeMore;
+                  }
+                  return Solidcolors.primaryColor;
+                }),
+              ),
+            ),
             fontFamily: 'dana',
             textTheme: const TextTheme(
                 headline1: TextStyle(
@@ -46,8 +71,9 @@ class MyApp extends StatelessWidget {
                     fontWeight: FontWeight.w300),
                 bodyText1: TextStyle(
                     fontFamily: 'dana',
-                    fontSize: 13,
-                    fontWeight: FontWeight.w300),
+                    fontSize: 16,
+                    color: Colors.black,
+                    fontWeight: FontWeight.w500),
                 headline2: TextStyle(
                     fontFamily: 'dana',
                     fontSize: 14,
@@ -62,8 +88,23 @@ class MyApp extends StatelessWidget {
                     fontFamily: 'dana',
                     fontSize: 14,
                     color: Colors.black,
+                    fontWeight: FontWeight.w700),
+                headline5: TextStyle(
+                    fontFamily: 'dana',
+                    fontSize: 15,
+                    color: Solidcolors.userProfileName,
+                    fontWeight: FontWeight.w700),
+                headline6: TextStyle(
+                    fontFamily: 'dana',
+                    fontSize: 15,
+                    color: Solidcolors.hintTextColor,
+                    fontWeight: FontWeight.w700),
+                headlineLarge: TextStyle(
+                    fontFamily: 'dana',
+                    fontSize: 12,
+                    color: Solidcolors.hintTextColor,
                     fontWeight: FontWeight.w700))),
         debugShowCheckedModeBanner: false,
-        home: SplashScreen());
+        home: const SplashScreen());
   }
 }

@@ -17,6 +17,11 @@ class Solidcolors {
   static const Color submitPpodcast = Color.fromARGB(255, 246, 246, 246);
   static const Color subText = Color.fromARGB(255, 197, 197, 197);
   static const Color seeMore = Color.fromARGB(255, 40, 107, 184);
+  static const Color dividerColor = Color.fromARGB(255, 112, 112, 112);
+  static const Color userProfileName = Color.fromARGB(255, 66, 4, 87);
+  static const Color hintTextColor = Color.fromARGB(255, 219, 219, 219);
+  static const Color selectedTags = Color.fromARGB(255, 242, 242, 242);
+  static const Color thinkTextColor = Color.fromARGB(255, 170, 170, 170);
 }
 
 class Gradiantcolors {

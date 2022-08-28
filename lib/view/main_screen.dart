@@ -1,21 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:tec/gen/assets.gen.dart';
-import 'package:tec/models/fake_data.dart';
 import 'package:tec/my_colors.dart';
-import 'package:tec/my_strings.dart';
+import 'package:tec/view/profile_screen.dart';
+import 'package:tec/view/register_intro.dart';
 import 'home_screen.dart';
 
-class MainScreen extends StatelessWidget {
+class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
 
+  @override
+  State<MainScreen> createState() => _MainScreenState();
+}
+
+class _MainScreenState extends State<MainScreen> {
+  var selectedPageIndex = 0;
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     var textTheme = Theme.of(context).textTheme;
     double bodyMargin = size.width / 10;
 
-    // TODO: implement build
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -32,9 +36,26 @@ class MainScreen extends StatelessWidget {
         ),
         body: Stack(
           children: [
-            homeScreen(
-                size: size, textTheme: textTheme, bodyMargin: bodyMargin),
-            BottomNavigation(size: size, bodyMargin: bodyMargin),
+            Positioned.fill(
+                child: IndexedStack(
+              index: selectedPageIndex,
+              children: [
+                HomeScreen(
+                    size: size, textTheme: textTheme, bodyMargin: bodyMargin),
+                RegisterIntro(),
+                ProfileScreen(
+                    size: size, textTheme: textTheme, bodyMargin: bodyMargin),
+              ],
+            )),
+            BottomNavigation(
+              size: size,
+              bodyMargin: bodyMargin,
+              changeScreen: (int value) {
+                setState(() {
+                  selectedPageIndex = value;
+                });
+              },
+            ),
           ],
         ),
       ),
@@ -47,10 +68,12 @@ class BottomNavigation extends StatelessWidget {
     Key? key,
     required this.size,
     required this.bodyMargin,
+    required this.changeScreen,
   }) : super(key: key);
 
   final Size size;
   final double bodyMargin;
+  final Function(int) changeScreen;
 
   @override
   Widget build(BuildContext context) {
@@ -78,19 +101,19 @@ class BottomNavigation extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 IconButton(
-                    onPressed: (() {}),
+                    onPressed: (() => changeScreen(0)),
                     icon: ImageIcon(
                       Assets.icons.home,
                       color: Colors.white,
                     )),
                 IconButton(
-                    onPressed: (() {}),
+                    onPressed: (() => changeScreen(1)),
                     icon: ImageIcon(
                       Assets.icons.write,
                       color: Colors.white,
                     )),
                 IconButton(
-                    onPressed: (() {}),
+                    onPressed: (() => changeScreen(2)),
                     icon: ImageIcon(
                       Assets.icons.user,
                       color: Colors.white,
