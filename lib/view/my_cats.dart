@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:tec/gen/assets.gen.dart';
 import 'package:tec/models/fake_data.dart';
-import 'package:tec/my_component.dart';
-import '../my_colors.dart';
-import '../my_strings.dart';
+import 'package:tec/component/my_component.dart';
+import '../component/my_colors.dart';
+import '../component/my_strings.dart';
 
 class MyCats extends StatefulWidget {
   @override
