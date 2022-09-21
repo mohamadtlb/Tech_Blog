@@ -1,6 +1,6 @@
+import 'dart:developer';
 import 'package:flutter/material.dart';
-
-import '../gen/assets.gen.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../gen/assets.gen.dart';
 import '../models/fake_data.dart';
 import 'my_colors.dart';
@@ -60,5 +60,14 @@ class Maintags extends StatelessWidget {
             ],
           ),
         ));
+  }
+}
+
+mylaunchUrl(String url) async {
+  var uri = Uri.parse(url);
+  if (await canLaunchUrl(uri)) {
+    await launchUrl(uri);
+  } else {
+    log("could not launch ${uri.toString()}");
   }
 }
