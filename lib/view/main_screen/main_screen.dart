@@ -4,7 +4,7 @@ import 'package:tec/component/my_component.dart';
 import 'package:tec/component/my_strings.dart';
 import 'package:tec/gen/assets.gen.dart';
 import 'package:tec/component/my_colors.dart';
-import 'package:tec/view/profile_screen.dart';
+import 'package:tec/view/main_screen/profile_screen.dart';
 import 'package:tec/view/register_intro.dart';
 import 'home_screen.dart';
 import 'package:share_plus/share_plus.dart';

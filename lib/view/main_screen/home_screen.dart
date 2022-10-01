@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:tec/controller/home_screen_controler.dart';
-import '../gen/assets.gen.dart';
-import '../models/fake_data.dart';
-import '../component/my_colors.dart';
-import '../component/my_component.dart';
-import '../component/my_strings.dart';
+import 'package:tec/view/article_list_screen.dart';
+import '../../gen/assets.gen.dart';
+import '../../models/fake_data.dart';
+import '../../component/my_colors.dart';
+import '../../component/my_component.dart';
+import '../../component/my_strings.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -35,8 +36,7 @@ class HomeScreen extends StatelessWidget {
                   children: [
                     poster(),
                     const SizedBox(height: 16),
-                    HomePageTagList(
-                        bodyMargin: bodyMargin, textTheme: textTheme),
+                    tags(),
                     const SizedBox(height: 25),
                     SeeMoreBlog(bodyMargin: bodyMargin, textTheme: textTheme),
                     topVisited(),
@@ -244,6 +244,22 @@ class HomeScreen extends StatelessWidget {
       ],
     );
   }
+
+  Widget tags() {
+    return SizedBox(
+      height: 60,
+      child: ListView.builder(
+          itemCount: homeScreenControler.tagsList.length,
+          scrollDirection: Axis.horizontal,
+          itemBuilder: ((context, index) {
+            return Padding(
+              padding:
+                  EdgeInsets.fromLTRB(0, 8, index == 0 ? bodyMargin : 15, 8),
+              child: Maintags(textTheme: textTheme, index: index),
+            );
+          })),
+    );
+  }
 }
 
 class SeeMorePodcast extends StatelessWidget {
@@ -308,34 +324,6 @@ class SeeMoreBlog extends StatelessWidget {
           )
         ],
       ),
-    );
-  }
-}
-
-class HomePageTagList extends StatelessWidget {
-  const HomePageTagList({
-    Key? key,
-    required this.bodyMargin,
-    required this.textTheme,
-  }) : super(key: key);
-
-  final double bodyMargin;
-  final TextTheme textTheme;
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: 60,
-      child: ListView.builder(
-          itemCount: tagList.length,
-          scrollDirection: Axis.horizontal,
-          itemBuilder: ((context, index) {
-            return Padding(
-              padding:
-                  EdgeInsets.fromLTRB(0, 8, index == 0 ? bodyMargin : 15, 8),
-              child: Maintags(textTheme: textTheme, index: index),
-            );
-          })),
     );
   }
 }

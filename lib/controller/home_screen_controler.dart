@@ -3,11 +3,12 @@ import 'package:tec/component/api_constant.dart';
 import 'package:tec/models/article_model.dart';
 import 'package:tec/models/podcast_model.dart';
 import 'package:tec/models/poster_model.dart';
+import 'package:tec/models/tags_model.dart';
 import 'package:tec/services/dio_service.dart';
 
 class HomeScreenControler extends GetxController {
   Rx<PosterModel> poster = PosterModel().obs;
-  RxList tagsList = RxList();
+  RxList<TagsModel> tagsList = RxList();
   RxList<ArticleModel> topVisitedList = RxList();
   RxList<PodcastModel> topPodcasts = RxList();
   RxBool loading = false.obs;
@@ -26,6 +27,9 @@ class HomeScreenControler extends GetxController {
       });
       response.data['top_podcasts'].forEach((element) {
         topPodcasts.add(PodcastModel.fromJson(element));
+      });
+      response.data['tags'].forEach((element) {
+        tagsList.add(TagsModel.fromJson(element));
       });
       poster.value = PosterModel.fromJson(response.data['poster']);
 

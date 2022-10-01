@@ -1,10 +1,13 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:get/get.dart';
+import 'package:tec/controller/home_screen_controler.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../gen/assets.gen.dart';
 import '../models/fake_data.dart';
 import 'my_colors.dart';
+import 'text_style.dart';
 
 class TechDivider extends StatelessWidget {
   const TechDivider({
@@ -57,7 +60,8 @@ class Maintags extends StatelessWidget {
                 size: 16,
               ),
               const SizedBox(width: 8),
-              Text(tagList[index].title, style: textTheme.headline2)
+              Text(Get.find<HomeScreenControler>().tagsList[index].title!,
+                  style: textTheme.headline2)
             ],
           ),
         ));
@@ -85,4 +89,39 @@ class loading extends StatelessWidget {
       size: 32,
     );
   }
+}
+
+PreferredSize appBar(String title) {
+  return PreferredSize(
+    preferredSize: const Size.fromHeight(60),
+    child: Padding(
+      padding: const EdgeInsets.all(12.0),
+      child: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(left: 16),
+            child: Center(
+              child: Text(
+                title,
+                style: appBarTextStyle,
+              ),
+            ),
+          )
+        ],
+        leading: Padding(
+          padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+          child: Container(
+            height: 40,
+            width: 40,
+            decoration: BoxDecoration(
+                color: Solidcolors.primaryColor.withAlpha(175),
+                shape: BoxShape.circle),
+            child: const Icon(Icons.keyboard_arrow_right_rounded),
+          ),
+        ),
+      ),
+    ),
+  );
 }
