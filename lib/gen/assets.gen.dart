@@ -56,23 +56,13 @@ class $AssetsImagesGen {
   AssetGenImage get peofileAvatar =>
       const AssetGenImage('assets/images/peofile_avatar.png');
 
-  /// File path: assets/images/podicast.png
-  AssetGenImage get podicast =>
-      const AssetGenImage('assets/images/podicast.png');
-
   /// File path: assets/images/poster_test.png
   AssetGenImage get posterTest =>
       const AssetGenImage('assets/images/poster_test.png');
 
-  /// File path: assets/images/radiopodcast.png
-  AssetGenImage get radiopodcast =>
-      const AssetGenImage('assets/images/radiopodcast.png');
-
-  /// File path: assets/images/ramzon.png
-  AssetGenImage get ramzon => const AssetGenImage('assets/images/ramzon.png');
-
-  /// File path: assets/images/teccast.png
-  AssetGenImage get teccast => const AssetGenImage('assets/images/teccast.png');
+  /// File path: assets/images/single_place_holder.jpg
+  AssetGenImage get singlePlaceHolder =>
+      const AssetGenImage('assets/images/single_place_holder.jpg');
 
   /// File path: assets/images/techBot.svg.svg
   SvgGenImage get techBotSvg =>

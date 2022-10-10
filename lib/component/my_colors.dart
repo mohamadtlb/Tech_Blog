@@ -46,4 +46,8 @@ class Gradiantcolors {
     Color.fromARGB(195, 72, 20, 88),
     Color.fromARGB(255, 28, 20, 81),
   ];
+  static const List<Color> singlePageGradiant = [
+    Color.fromARGB(255, 46, 0, 71),
+    Color.fromARGB(0, 0, 0, 0),
+  ];
 }

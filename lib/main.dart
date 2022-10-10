@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:get/get.dart';
 import 'package:tec/component/my_colors.dart';
 import 'package:tec/view/article_list_screen.dart';
+import 'package:tec/view/single.dart';
 import 'package:tec/view/splash_screen.dart';
 
 void main() {
@@ -23,15 +25,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var textTheme = Theme.of(context).textTheme;
-    return MaterialApp(
-        localizationsDelegates: const [
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate,
-        ],
-        supportedLocales: const [
-          Locale('fa', ''), // farsi
-        ],
+    return GetMaterialApp(
+        locale: const Locale('fa'),
         theme: ThemeData(
             //for textfield
             inputDecorationTheme: InputDecorationTheme(
@@ -106,6 +101,7 @@ class MyApp extends StatelessWidget {
                     color: Solidcolors.hintTextColor,
                     fontWeight: FontWeight.w700))),
         debugShowCheckedModeBanner: false,
+        //home: Single());
         home: ArticleListScreen());
   }
 }
